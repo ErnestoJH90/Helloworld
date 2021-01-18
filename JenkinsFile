@@ -13,8 +13,8 @@ pipeline {
         stage ("Build") {
             steps {
                 
-                mvn "mvn -version"
-                mvn "mvn clean install"
+                 mvn -version
+                 mvn clean install
             }
         }
     }
