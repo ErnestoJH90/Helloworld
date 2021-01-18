@@ -1,9 +1,18 @@
 pipeline {
-    agent any
-
+    environment{
+        JAVA _TOOL_OPTIONS ="-Duser.home=/c/maven"
+    }
+    agent{
+        docker{
+            image "maven:3.6.0-jdk-12"
+            label "docker"
+            args "-v /C:/apache-maven-3.6.3/bin -e MAVEN_CONFIG=C:/apache-maven-3.6.3/bin"
+        }
+    }
     stages {
         stage ("Build") {
             steps {
+                SH "shh -V"
                 sh "mvn -version"
                 sh "mvn clean install"
             }
