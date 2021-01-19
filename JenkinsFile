@@ -2,23 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage ("Build") {
+        stage('Build') {
             steps {
-               bat "mvn -version"
-               
+                bat 'mvn -version'
             }
         }
-    }
-        stage ("Install") {
+        stage('Install') {
             steps {
-               
-               bat "mvn clean install"
+                bat 'mvn clean install'
             }
         }
-
-    post {
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+        post {
         always {
             cleanWs()
         }
     }
+  }
 }
