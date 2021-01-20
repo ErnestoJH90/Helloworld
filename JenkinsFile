@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-               bat ' publish'
+               echo ' publish'
             }
         }
     }
