@@ -13,14 +13,18 @@ pipeline {
             }
         }
         stage('Test') {
-            steps {
-                bat 'mvn test'
-            }
-        }
-        stage('Deploy') {
-            steps {
+            parallel{
+                stage{
+                  steps {
+                    bat 'mvn test'
+                   }
+               }
+            stage('Deploy') {
+              steps {
                echo ' publish'
+               }
             }
+          }
         }
     }
         post {
