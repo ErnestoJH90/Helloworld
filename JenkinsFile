@@ -16,6 +16,9 @@ pipeline {
             steps {
                 bat 'mvn test'
             }
+            steps {
+               bat 'make publish'
+            }
         }
     }
         post {
@@ -24,3 +27,4 @@ pipeline {
     }
   }
 }
+sh 'make publish'
