@@ -21,7 +21,7 @@ pipeline {
               bat 'mvn clean dependency:copy-dependencies package'
                }
             }
-           post {
+            post {
              always {
                cleanWs()
              }
