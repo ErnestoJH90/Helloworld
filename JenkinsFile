@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    
     stages {
         stage('Build') {
             steps {
@@ -13,18 +12,15 @@ pipeline {
             }
         }
         stage('Test') {
-            parallel{
-               stage('Test'){
-                  steps {
-                    bat 'mvn test'
+            steps {
+              bat 'mvn test'
                    }
                }
-            stage('Deploy') {
-              steps {
-               bat 'mvn clean dependency:copy-dependencies package'
+        stage('Deploy') {
+            steps {
+              bat 'mvn clean dependency:copy-dependencies package'
                }
             }
-          }
            post {
              always {
                cleanWs()
@@ -32,4 +28,3 @@ pipeline {
           }
         }
     }
-}
