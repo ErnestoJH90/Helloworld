@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
       stages {
         stage('Build') {
             steps {
@@ -21,10 +22,10 @@ pipeline {
               bat 'mvn clean dependency:copy-dependencies package'
                }
             }
+      }
       post {
         always {
           cleanWs()
              }
           }
         }
-    }
